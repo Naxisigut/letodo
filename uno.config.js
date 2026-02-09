@@ -17,7 +17,7 @@ export default defineConfig({
   // 主题配置
   theme: {
     colors: {
-      // 可以在这里扩展颜色主题
+      primary: '#7C9070', // 主题色
     },
   },
 })
