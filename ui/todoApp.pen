@@ -2430,57 +2430,6 @@
           "children": [
             {
               "type": "frame",
-              "id": "TfVY8",
-              "name": "newTaskInput",
-              "width": "fill_container",
-              "height": 40,
-              "fill": "#FFFFFF",
-              "cornerRadius": 12,
-              "stroke": {
-                "thickness": 1,
-                "fill": "#E5E5E5"
-              },
-              "effect": {
-                "type": "shadow",
-                "shadowType": "outer",
-                "color": "#00000006",
-                "offset": {
-                  "x": 0,
-                  "y": 1
-                },
-                "blur": 4
-              },
-              "gap": 8,
-              "padding": [
-                0,
-                12
-              ],
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "icon_font",
-                  "id": "8Wj1v",
-                  "name": "inputIcon",
-                  "width": 18,
-                  "height": 18,
-                  "iconFontName": "plus",
-                  "iconFontFamily": "lucide",
-                  "fill": "#6B6B6B"
-                },
-                {
-                  "type": "text",
-                  "id": "W0Sip",
-                  "name": "inputText",
-                  "fill": "#8E8E93",
-                  "content": "在此添加内容，按回车创建事件",
-                  "fontFamily": "Plus Jakarta Sans",
-                  "fontSize": 13,
-                  "fontWeight": "normal"
-                }
-              ]
-            },
-            {
-              "type": "frame",
               "id": "ky5IT",
               "name": "任务列表",
               "width": "fill_container",
@@ -2488,6 +2437,77 @@
               "layout": "vertical",
               "gap": 12,
               "children": [
+                {
+                  "type": "frame",
+                  "id": "gEtQj",
+                  "name": "顶部行",
+                  "width": "fill_container",
+                  "height": 40,
+                  "gap": 12,
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "TfVY8",
+                      "name": "newTaskInput",
+                      "width": "fill_container",
+                      "height": 40,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 12,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "#E5E5E5"
+                      },
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#00000006",
+                        "offset": {
+                          "x": 0,
+                          "y": 1
+                        },
+                        "blur": 4
+                      },
+                      "gap": 8,
+                      "padding": [
+                        0,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "8Wj1v",
+                          "name": "inputIcon",
+                          "width": 18,
+                          "height": 18,
+                          "iconFontName": "plus",
+                          "iconFontFamily": "lucide",
+                          "fill": "#6B6B6B"
+                        },
+                        {
+                          "type": "text",
+                          "id": "W0Sip",
+                          "name": "inputText",
+                          "fill": "#8E8E93",
+                          "content": "在此添加内容，按回车创建事件",
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "sd7Lu",
+                      "type": "ref",
+                      "ref": "s36Of",
+                      "width": "fit_content",
+                      "height": 40,
+                      "name": "日期选择组件实例"
+                    }
+                  ]
+                },
                 {
                   "type": "frame",
                   "id": "sIRoD",
@@ -3770,57 +3790,6 @@
           "children": [
             {
               "type": "frame",
-              "id": "F8lfb",
-              "name": "newTaskInput",
-              "width": "fill_container",
-              "height": 40,
-              "fill": "#FFFFFF",
-              "cornerRadius": 12,
-              "stroke": {
-                "thickness": 1,
-                "fill": "#E5E5E5"
-              },
-              "effect": {
-                "type": "shadow",
-                "shadowType": "outer",
-                "color": "#00000006",
-                "offset": {
-                  "x": 0,
-                  "y": 1
-                },
-                "blur": 4
-              },
-              "gap": 8,
-              "padding": [
-                0,
-                12
-              ],
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "icon_font",
-                  "id": "6Mnbh",
-                  "name": "inputIcon",
-                  "width": 18,
-                  "height": 18,
-                  "iconFontName": "plus",
-                  "iconFontFamily": "lucide",
-                  "fill": "#6B6B6B"
-                },
-                {
-                  "type": "text",
-                  "id": "SObMQ",
-                  "name": "inputText",
-                  "fill": "#8E8E93",
-                  "content": "在此添加内容，按回车创建事件",
-                  "fontFamily": "Plus Jakarta Sans",
-                  "fontSize": 13,
-                  "fontWeight": "normal"
-                }
-              ]
-            },
-            {
-              "type": "frame",
               "id": "osx7d",
               "name": "任务列表",
               "width": "fill_container",
@@ -3828,6 +3797,77 @@
               "layout": "vertical",
               "gap": 12,
               "children": [
+                {
+                  "type": "frame",
+                  "id": "wXw9S",
+                  "name": "顶部行",
+                  "width": "fill_container",
+                  "height": 40,
+                  "gap": 12,
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "F8lfb",
+                      "name": "newTaskInput",
+                      "width": "fill_container",
+                      "height": 40,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 12,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "#E5E5E5"
+                      },
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#00000006",
+                        "offset": {
+                          "x": 0,
+                          "y": 1
+                        },
+                        "blur": 4
+                      },
+                      "gap": 8,
+                      "padding": [
+                        0,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "6Mnbh",
+                          "name": "inputIcon",
+                          "width": 18,
+                          "height": 18,
+                          "iconFontName": "plus",
+                          "iconFontFamily": "lucide",
+                          "fill": "#6B6B6B"
+                        },
+                        {
+                          "type": "text",
+                          "id": "SObMQ",
+                          "name": "inputText",
+                          "fill": "#8E8E93",
+                          "content": "在此添加内容，按回车创建事件",
+                          "fontFamily": "Plus Jakarta Sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "3wH2P",
+                      "type": "ref",
+                      "ref": "s36Of",
+                      "width": "fit_content",
+                      "height": 40,
+                      "name": "日期选择组件实例"
+                    }
+                  ]
+                },
                 {
                   "type": "frame",
                   "id": "5hMSz",
@@ -4700,6 +4740,82 @@
                   ]
                 }
               ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "s36Of",
+      "x": 0,
+      "y": -1112,
+      "name": "Component/DatePicker",
+      "reusable": true,
+      "height": 40,
+      "gap": 8,
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "6jyS8",
+          "name": "当前日期显示",
+          "height": "fill_container",
+          "fill": "#7C9070",
+          "cornerRadius": 8,
+          "layout": "vertical",
+          "gap": 2,
+          "padding": [
+            0,
+            12
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "ivpYz",
+              "name": "当前日期文本",
+              "fill": "#FFFFFF",
+              "content": "2月9日",
+              "textAlign": "center",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 14,
+              "fontWeight": "semibold"
+            },
+            {
+              "type": "text",
+              "id": "6uf1w",
+              "name": "当前星期文本",
+              "fill": "#FFFFFF",
+              "content": "周一",
+              "textAlign": "center",
+              "fontFamily": "Plus Jakarta Sans",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "L1YVz",
+          "name": "重置按钮",
+          "width": 40,
+          "height": "fill_container",
+          "fill": "transparent",
+          "cornerRadius": 8,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "iEJwo",
+              "name": "重置图标",
+              "width": 18,
+              "height": 18,
+              "iconFontName": "refresh-cw",
+              "iconFontFamily": "lucide",
+              "fill": "#6B6B6B"
             }
           ]
         }
