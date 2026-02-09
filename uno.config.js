@@ -3,7 +3,9 @@ import { defineConfig, presetWind, presetIcons } from 'unocss'
 export default defineConfig({
   presets: [
     presetWind(), // Tailwind CSS 兼容预设
-    presetIcons(), // 图标预设
+    presetIcons({
+      autoInstall: true, // 自动安装缺失的图标集
+    }), // 图标预设
   ],
   // 可以在这里添加自定义规则、快捷方式等
   shortcuts: {

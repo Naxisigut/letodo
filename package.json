@@ -13,6 +13,7 @@
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
+    "@iconify-json/lucide": "^1.2.89",
     "@unocss/preset-icons": "^66.6.0",
     "@unocss/preset-wind": "^66.6.0",
     "@unocss/vite": "^66.6.0",
