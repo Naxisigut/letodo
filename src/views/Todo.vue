@@ -9,7 +9,6 @@
           type="text"
           placeholder="搜索任务..."
           class="flex-1 bg-transparent text-sm text-[#2D2D2D] outline-none"
-          style="font-family: 'Plus Jakarta Sans', sans-serif;"
         />
       </div>
 
@@ -24,7 +23,7 @@
           :class="{ 'bg-[#7C9070]': $route.path === '/todo' }"
         >
           <i class="i-lucide-check-square w-5 h-5 text-[#6B6B6B]"></i>
-          <span class="text-sm text-[#2D2D2D]" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+          <span class="text-sm text-[#2D2D2D]">
             今日待办
           </span>
         </router-link>
@@ -34,7 +33,7 @@
           :class="{ 'bg-[#7C9070]': $route.path === '/data-review' }"
         >
           <i class="i-lucide-bar-chart-3 w-5 h-5 text-[#6B6B6B]"></i>
-          <span class="text-sm text-[#2D2D2D]" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+          <span class="text-sm text-[#2D2D2D]">
             数据复盘
           </span>
         </router-link>
@@ -43,7 +42,7 @@
       <!-- 分类区块 -->
       <div class="flex flex-col gap-2 mt-4">
         <div class="flex items-center gap-2 h-11 px-2">
-          <span class="text-sm font-medium text-[#2D2D2D]" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+          <span class="text-sm font-medium text-[#2D2D2D]">
             分类
           </span>
         </div>
@@ -55,7 +54,7 @@
       <!-- 标签区块 -->
       <div class="flex flex-col gap-2 mt-4">
         <div class="flex items-center gap-2 h-11 px-2">
-          <span class="text-sm font-medium text-[#2D2D2D]" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+          <span class="text-sm font-medium text-[#2D2D2D]">
             标签
           </span>
         </div>
@@ -69,10 +68,10 @@
     <main class="flex-1 p-8 flex flex-col gap-6">
       <!-- 顶部行 -->
       <div class="flex items-center justify-between h-10">
-        <h2 class="text-2xl font-medium text-[#2D2D2D]" style="font-family: 'Fraunces', serif;">
+        <h2 class="text-2xl font-medium text-[#2D2D2D]">
           今日待办
         </h2>
-        <button class="bg-[#7C9070] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+        <button class="bg-[#7C9070] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity">
           添加任务
         </button>
       </div>
@@ -83,15 +82,15 @@
         <div class="bg-white rounded-xl shadow-sm p-5 h-[72px] flex items-center gap-4">
           <input type="checkbox" class="w-5 h-5" />
           <div class="flex-1">
-            <h3 class="text-sm font-medium text-[#2D2D2D]" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+            <h3 class="text-sm font-medium text-[#2D2D2D]">
               任务标题
             </h3>
-            <p class="text-xs text-[#6B6B6B] mt-1" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+            <p class="text-xs text-[#6B6B6B] mt-1">
               任务描述
             </p>
           </div>
           <div class="flex items-center gap-2">
-            <span class="text-xs text-[#6B6B6B]" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+            <span class="text-xs text-[#6B6B6B]">
               标签
             </span>
             <button class="text-[#6B6B6B] hover:text-[#2D2D2D]">
@@ -104,15 +103,15 @@
         <div class="bg-white rounded-xl shadow-sm p-5 h-[72px] flex items-center gap-4">
           <input type="checkbox" class="w-5 h-5" />
           <div class="flex-1">
-            <h3 class="text-sm font-medium text-[#2D2D2D]" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+            <h3 class="text-sm font-medium text-[#2D2D2D]">
               任务标题
             </h3>
-            <p class="text-xs text-[#6B6B6B] mt-1" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+            <p class="text-xs text-[#6B6B6B] mt-1">
               任务描述
             </p>
           </div>
           <div class="flex items-center gap-2">
-            <span class="text-xs text-[#6B6B6B]" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+            <span class="text-xs text-[#6B6B6B]">
               标签
             </span>
             <button class="text-[#6B6B6B] hover:text-[#2D2D2D]">
@@ -125,15 +124,15 @@
         <div class="bg-white rounded-xl shadow-sm p-5 h-[72px] flex items-center gap-4">
           <input type="checkbox" class="w-5 h-5" />
           <div class="flex-1">
-            <h3 class="text-sm font-medium text-[#2D2D2D]" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+            <h3 class="text-sm font-medium text-[#2D2D2D]">
               任务标题
             </h3>
-            <p class="text-xs text-[#6B6B6B] mt-1" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+            <p class="text-xs text-[#6B6B6B] mt-1">
               任务描述
             </p>
           </div>
           <div class="flex items-center gap-2">
-            <span class="text-xs text-[#6B6B6B]" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+            <span class="text-xs text-[#6B6B6B]">
               标签
             </span>
             <button class="text-[#6B6B6B] hover:text-[#2D2D2D]">
@@ -146,15 +145,15 @@
         <div class="bg-white rounded-xl shadow-sm p-5 h-[72px] flex items-center gap-4">
           <input type="checkbox" class="w-5 h-5" />
           <div class="flex-1">
-            <h3 class="text-sm font-medium text-[#2D2D2D]" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+            <h3 class="text-sm font-medium text-[#2D2D2D]">
               任务标题
             </h3>
-            <p class="text-xs text-[#6B6B6B] mt-1" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+            <p class="text-xs text-[#6B6B6B] mt-1">
               任务描述
             </p>
           </div>
           <div class="flex items-center gap-2">
-            <span class="text-xs text-[#6B6B6B]" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+            <span class="text-xs text-[#6B6B6B]">
               标签
             </span>
             <button class="text-[#6B6B6B] hover:text-[#2D2D2D]">
