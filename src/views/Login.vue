@@ -156,6 +156,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { supabase } from '../utils/superbase'
 
 const isLoginMode = ref(true)
 
@@ -182,11 +183,33 @@ const handleLogin = async () => {
 }
 
 // 注册方法
-const handleRegister = async () => {
-  // 注册业务逻辑
+function handleRegister() {
   console.log('注册', registerForm.value)
-  // TODO: 实现注册逻辑
-  // 注册成功后切换到登录板块
-  switchToLog()
+  if(!registerForm.value.email || !registerForm.value.password || !registerForm.value.confirmPassword) {
+    return console.log('object');
+  }
+  if(registerForm.value.password !== registerForm.value.confirmPassword) {
+    return console.log('密码不一致');
+  }
+
+  supabase.auth.signUp({
+    email: registerForm.value.email,
+    password: registerForm.value.password
+  }).then((res) => {
+    console.log(1111, res);
+    // switchToLog()
+    if(res.error) {
+      console.log('注册失败', res.error.message);
+    }else{
+      const session = res.data.session // 会话
+      const user = res.data.user // 用户
+      if(session && user) {
+        console.log('注册成功', session, user);
+        switchToLog()
+      }
+    }
+  }).catch((err) => {
+    console.log('err', {err});
+  })
 }
 </script>
