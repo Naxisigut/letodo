@@ -48,7 +48,7 @@
   
           <!-- 登录按钮 -->
           <button
-            @click="handleLogin"
+            @click="handleLog"
             class="bg-primary text-white rounded-[10px] h-12 w-full flex items-center justify-center text-[13px] font-semibold hover:opacity-90 transition-opacity"
             style="padding: 0 22px;"
           >
@@ -158,14 +158,15 @@
 import { ref } from 'vue'
 import { supabase } from '../utils/superbase'
 import { toast } from 'vue-sonner'
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
 
 const isLoginMode = ref(true)
-
 const loginForm = ref({
   email: '',
   password: ''
 })
-
 const registerForm = ref({
   email: '',
   password: '',
@@ -175,15 +176,55 @@ const registerForm = ref({
 const switchToReg = () => isLoginMode.value = false
 const switchToLog = () => isLoginMode.value = true
 
-// 登录方法
-const handleLogin = async () => {
-  // 登录业务逻辑
-  console.log('登录', loginForm.value)
-  // TODO: 实现登录逻辑
-
+//#region 登录方法
+const logLock = ref(false)
+function handleLogLock(status) {
+  if(status) {
+    toast.dismiss()
+    logLock.value = true
+  }else{
+    setTimeout(() => logLock.value = false, 1000)
+  }
 }
+function resetLogForm() { 
+  loginForm.value = {
+    email: '',
+    password: ''
+  }
+}
+async function handleLog() {
+  if(logLock.value) return
+  handleLogLock(true)
+  console.log('登录', loginForm.value)
+  if(!loginForm.value.email || !loginForm.value.password) {
+    toast.error('请填写完整信息')
+    handleLogLock(false)
+    return
+  }
+  toast.loading('登录中...')
+  supabase.auth.signInWithPassword({
+    email: loginForm.value.email,
+    password: loginForm.value.password
+  }).then((res) => {
+    toast.dismiss()
+    if(res.error) {
+      toast.error('登录失败：' + res.error.message)
+    }else{
+      toast.success('登录成功！')
+      router.push('/todo')
+    }
+  }).catch((err) => {
+    toast.dismiss()
+    console.log('err', {err});
+    toast.error('登录失败，请稍后重试')
+  }).finally(() => {
+    handleLogLock(false)
+  })
+}
+//#endregion
 
-// 注册方法
+
+//#region 注册方法
 const regLock = ref(false)
 function handleRegLock(status) {
   if(status) {
@@ -191,6 +232,13 @@ function handleRegLock(status) {
     regLock.value = true
   }else{
     setTimeout(() => regLock.value = false, 1000)
+  }
+}
+function resetRegForm() { 
+  registerForm.value = {
+    email: '',
+    password: '',
+    confirmPassword: ''
   }
 }
 function handleReg() {
@@ -217,12 +265,16 @@ function handleReg() {
     if(res.error) {
       toast.error('注册失败：' + res.error.message)
     }else{
+      // 直接成功，没有开启验证：跳转回登录页面
       const session = res.data.session // 会话
       const user = res.data.user // 用户
       if(session && user) {
         toast.success('注册成功！')
+        resetRegForm()
+        resetLogForm()
+        switchToLog()
       } else {
-        toast.info('注册成功！请检查邮箱验证链接')
+        toast.error('注册失败，请稍后重试')
       }
     }
   }).catch((err) => {
@@ -233,4 +285,5 @@ function handleReg() {
     handleRegLock(false)
   })
 }
+//#endregion
 </script>
