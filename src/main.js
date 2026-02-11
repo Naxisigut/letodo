@@ -1,7 +1,13 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import { Toaster } from 'vue-sonner'
 import 'virtual:uno.css'
+import '@unocss/reset/tailwind.css' // 样式重置
+import 'vue-sonner/style.css'
 import './style.css'
 
-createApp(App).use(router).mount('#app')
+const app = createApp(App)
+app.use(router)
+app.component('Toaster', Toaster)
+app.mount('#app')
