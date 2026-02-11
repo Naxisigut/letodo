@@ -129,7 +129,7 @@
   
           <!-- 注册按钮 -->
           <button
-            @click="handleRegister"
+            @click="handleReg"
             class="bg-primary text-white rounded-[10px] h-12 w-full flex items-center justify-center text-[13px] font-semibold hover:opacity-90 transition-opacity"
             style="padding: 0 22px;"
           >
@@ -157,6 +157,7 @@
 <script setup>
 import { ref } from 'vue'
 import { supabase } from '../utils/superbase'
+import { toast } from 'vue-sonner'
 
 const isLoginMode = ref(true)
 
@@ -183,33 +184,53 @@ const handleLogin = async () => {
 }
 
 // 注册方法
-function handleRegister() {
+const regLock = ref(false)
+function handleRegLock(status) {
+  if(status) {
+    toast.dismiss()
+    regLock.value = true
+  }else{
+    setTimeout(() => regLock.value = false, 1000)
+  }
+}
+function handleReg() {
+  if(regLock.value) return
+  handleRegLock(true)
   console.log('注册', registerForm.value)
   if(!registerForm.value.email || !registerForm.value.password || !registerForm.value.confirmPassword) {
-    return console.log('object');
+    toast.error('请填写完整信息')
+    handleRegLock(false)
+    return
   }
   if(registerForm.value.password !== registerForm.value.confirmPassword) {
-    return console.log('密码不一致');
+    toast.error('两次输入的密码不一致')
+    handleRegLock(false)
+    return
   }
 
+  toast.loading('注册中...')
   supabase.auth.signUp({
     email: registerForm.value.email,
     password: registerForm.value.password
   }).then((res) => {
-    console.log(1111, res);
-    // switchToLog()
+    toast.dismiss()
     if(res.error) {
-      console.log('注册失败', res.error.message);
+      toast.error('注册失败：' + res.error.message)
     }else{
       const session = res.data.session // 会话
       const user = res.data.user // 用户
       if(session && user) {
-        console.log('注册成功', session, user);
-        switchToLog()
+        toast.success('注册成功！')
+      } else {
+        toast.info('注册成功！请检查邮箱验证链接')
       }
     }
   }).catch((err) => {
+    toast.dismiss()
     console.log('err', {err});
+    toast.error('注册失败，请稍后重试')
+  }).finally(() => {
+    handleRegLock(false)
   })
 }
 </script>
