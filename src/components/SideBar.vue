@@ -38,35 +38,47 @@
     </div>
 
     <!-- 分类区块 -->
-    <div class="flex flex-col gap-2 mt-4">
-      <div class="flex items-center gap-2 h-11 px-2">
+    <div class="flex flex-col gap-2">
+      <button
+        type="button"
+        class="flex items-center gap-2 h-11 px-2 rounded-lg hover:bg-[#F5F5F5] transition-colors"
+        @click="categoryExpanded = !categoryExpanded"
+      >
         <span class="text-sm font-medium text-[#2D2D2D]">
           分类
         </span>
-      </div>
-      <div class="flex flex-col gap-1">
-        <!-- 分类项可以在这里动态添加 -->
-      </div>
-      <div class="flex flex-col gap-1 mt-1">
-        <button
-          type="button"
-          class="flex items-center gap-2 h-9 px-[14px] rounded-lg text-left hover:bg-[#F5F5F5] transition-colors"
-        >
-          <i class="i-lucide-plus w-3 h-3 text-[#6B6B6B]"></i>
-          <span class="text-sm text-[#6B6B6B]">新建</span>
-        </button>
-        <button
-          type="button"
-          class="flex items-center gap-2 h-9 px-[14px] rounded-lg text-left hover:bg-[#F5F5F5] transition-colors"
-        >
-          <i class="i-lucide-settings w-3 h-3 text-[#6B6B6B]"></i>
-          <span class="text-sm text-[#6B6B6B]">管理</span>
-        </button>
-      </div>
+        <i
+          class="w-[18px] h-[18px] text-[#6B6B6B] transition-transform duration-200"
+          :class="categoryExpanded ? 'i-lucide-chevron-down' : 'i-lucide-chevron-right'"
+        />
+      </button>
+      <Transition name="collapse">
+        <div v-show="categoryExpanded" class="flex flex-col gap-1 overflow-hidden">
+          <div class="flex flex-col gap-1">
+            <!-- 分类项可以在这里动态添加 -->
+          </div>
+          <div class="flex flex-col gap-1 mt-1">
+            <button
+              type="button"
+              class="flex items-center gap-2 h-9 px-[14px] rounded-lg text-left hover:bg-[#F5F5F5] transition-colors"
+            >
+              <i class="i-lucide-plus w-3 h-3 text-[#6B6B6B]"></i>
+              <span class="text-sm text-[#6B6B6B]">新建</span>
+            </button>
+            <button
+              type="button"
+              class="flex items-center gap-2 h-9 px-[14px] rounded-lg text-left hover:bg-[#F5F5F5] transition-colors"
+            >
+              <i class="i-lucide-settings w-3 h-3 text-[#6B6B6B]"></i>
+              <span class="text-sm text-[#6B6B6B]">管理</span>
+            </button>
+          </div>
+        </div>
+      </Transition>
     </div>
 
     <!-- 标签区块 -->
-    <div class="flex flex-col gap-2 mt-4">
+    <div class="flex flex-col gap-2">
       <div class="flex items-center gap-2 h-11 px-2">
         <span class="text-sm font-medium text-[#2D2D2D]">
           标签
@@ -80,7 +92,26 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
+const categoryExpanded = ref(true)
 </script>
+
+<style scoped>
+.collapse-enter-active,
+.collapse-leave-active {
+  transition: all 0.2s ease;
+}
+.collapse-enter-from,
+.collapse-leave-to {
+  opacity: 0;
+  max-height: 0 !important;
+}
+.collapse-enter-to,
+.collapse-leave-from {
+  opacity: 1;
+  max-height: 300px;
+}
+</style>
