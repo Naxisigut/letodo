@@ -18,7 +18,7 @@
       <router-link
         to="/todo"
         class="flex items-center gap-3 h-11 px-[14px] rounded-[10px]"
-        :class="{ 'bg-[#7C9070]': route.path === '/todo' }"
+        :class="{ 'bg-primary': route.path === '/todo' }"
       >
         <i class="i-lucide-check-square w-5 h-5 text-[#6B6B6B]"></i>
         <span class="text-sm text-[#2D2D2D]">
@@ -28,7 +28,7 @@
       <router-link
         to="/data-review"
         class="flex items-center gap-3 h-11 px-[14px] rounded-[10px]"
-        :class="{ 'bg-[#7C9070]': route.path === '/data-review' }"
+        :class="{ 'bg-primary': route.path === '/data-review' }"
       >
         <i class="i-lucide-bar-chart-3 w-5 h-5 text-[#6B6B6B]"></i>
         <span class="text-sm text-[#2D2D2D]">
