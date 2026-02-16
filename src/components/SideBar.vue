@@ -61,6 +61,7 @@
             <button
               type="button"
               class="flex items-center gap-2 h-9 px-[14px] rounded-lg text-left hover:bg-[#F5F5F5] transition-colors"
+              @click="onNewCate"
             >
               <i class="i-lucide-plus w-3 h-3 text-[#6B6B6B]"></i>
               <span class="text-sm text-[#6B6B6B]">新建</span>
@@ -94,9 +95,27 @@
 <script setup>
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
+import { useLodoModal } from '@/utils/modal'
+import AddCateModal from '@/components/AddCateModal.vue'
 
 const route = useRoute()
 const categoryExpanded = ref(true)
+
+
+const { 
+  open: openNewCate, 
+  close: closeNewCate 
+} = useLodoModal({
+  title: '新增分类',
+  cpnt: AddCateModal,
+})
+
+
+function onNewCate() {
+  openNewCate()
+}
+
+
 </script>
 
 <style scoped>

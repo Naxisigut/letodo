@@ -1,5 +1,5 @@
 {
-  "version": "2.7",
+  "version": "2.8",
   "children": [
     {
       "type": "frame",
@@ -4826,7 +4826,7 @@
       "id": "C8Bhp",
       "x": 2171,
       "y": -1255,
-      "name": "Component/AddCategoryDrawer",
+      "name": "Component/AddCateModal",
       "reusable": true,
       "width": 320,
       "height": 300,
