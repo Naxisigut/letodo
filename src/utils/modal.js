@@ -1,5 +1,5 @@
 
-import { useModal } from 'vue-final-modal';
+import { useModal, useModalSlot } from 'vue-final-modal';
 import LodoModalWrapper from '@/components/LodoModalWrapper.vue'
 
 
@@ -16,12 +16,19 @@ export function useLodoModal(params) {
     attrs: {
       title,
       showConfirm,
-      onInnerClose() {
+      onWrapperClose() {
         close()
       },
     },
     slots: {
-      default: cpnt,
+      default: useModalSlot({
+        component: cpnt,
+        attrs: {
+          onClose() {
+            close()
+          },
+        },
+      }),
     },
   })
 

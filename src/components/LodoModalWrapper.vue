@@ -7,7 +7,7 @@ defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (e: 'innerClose'): void
+  (e: 'wrapperClose'): void
 }>()
 </script>
 
@@ -20,12 +20,12 @@ const emit = defineEmits<{
   >
     <div class="flex items-center justify-between h-16 px-6 py-5 shrink-0">
       <h1 class="text-xl font-medium text-[#2D2D2D]">{{ title }}</h1>
-      <i class="i-lucide-x w-6 h-6 text-[#6B6B6B] cursor-pointer" @click="emit('innerClose')"></i>
+      <i class="i-lucide-x w-6 h-6 text-[#6B6B6B] cursor-pointer" @click="emit('wrapperClose')"></i>
     </div>
     <div class="flex flex-col gap-6 px-6 pb-6">
       <slot />
     </div>
-    <button v-if="showConfirm" class="mt-1 ml-auto px-2 border rounded-lg" @click="emit('innerClose')">
+    <button v-if="showConfirm" class="mt-1 ml-auto px-2 border rounded-lg" @click="emit('wrapperClose')">
       Confirm
     </button>
   </VueFinalModal>
