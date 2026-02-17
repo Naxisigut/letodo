@@ -26,12 +26,18 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, inject } from 'vue'
+import { supabase } from '@/utils/superbase';
+import { toast } from 'vue-sonner'
+
+
+const emit = defineEmits<{
+  (e: 'close'): void
+}>()
 
 const name = ref('')
 const selectedColor = ref('#7C9070')
-
 const colors = [
   '#7C9070',
   '#E74C3C',
@@ -41,11 +47,45 @@ const colors = [
   '#1ABC9C',
 ]
 
-const modalClose = inject('modalClose')
 
-function onCreate() {
-  // TODO: 调用 API 创建分类
-  console.log('创建分类', { name: name.value, color: selectedColor.value })
-  modalClose?.()
+async function onCreate() {
+  const trimmedName = name.value.trim()
+  if (!trimmedName) {
+    toast.error('请输入分类名称')
+    return
+  }
+  if (trimmedName.length > 50) {
+    toast.error('分类名称不能超过 50 个字符')
+    return
+  }
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) {
+    toast.error('请先登录')
+    return
+  }
+
+  toast.loading('创建分类中...')
+  const res = await supabase
+    .from('categories')
+    .insert({
+      user_id: user.id,
+      name: name.value.trim(),
+      color: selectedColor.value,
+    })
+  console.log('res', res)
+
+  toast.dismiss()
+  if (res.error) {
+    toast.error('创建分类失败:' + res.error.message)
+    return
+  }
+
+  toast.success('创建分类成功')
+  setTimeout(() => {
+    emit('close')
+  }, 1000)
 }
+
+
+
 </script>
