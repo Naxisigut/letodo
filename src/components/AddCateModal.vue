@@ -30,6 +30,7 @@
 import { ref, inject } from 'vue'
 import { supabase } from '@/utils/superbase';
 import { toast } from 'vue-sonner'
+import { useAllCates } from '@/hooks/useGlobal'
 
 
 const emit = defineEmits<{
@@ -83,6 +84,7 @@ async function onCreate() {
   toast.success('创建分类成功')
   setTimeout(() => {
     emit('close')
+    useAllCates().refresh()
   }, 1000)
 }
 

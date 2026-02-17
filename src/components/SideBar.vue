@@ -53,27 +53,26 @@
         />
       </button>
       <Transition name="collapse">
-        <div v-show="categoryExpanded" class="flex flex-col gap-1 overflow-hidden">
-          <div class="flex flex-col gap-1">
-            <!-- 分类项可以在这里动态添加 -->
+        <div v-show="categoryExpanded" class="flex flex-col overflow-hidden">
+          <div v-for="cate in allCates" :key="cate.id" class="flex items-center gap-2 h-9 px-[14px] rounded-lg text-left hover:bg-[#F5F5F5] transition-colors">
+            <div class="w-3 h-3 rounded-full" :style="{ backgroundColor: cate.color }"></div>
+            <span class="text-sm text-[#6B6B6B]">{{ cate.name }}</span>
           </div>
-          <div class="flex flex-col gap-1 mt-1">
-            <button
-              type="button"
-              class="flex items-center gap-2 h-9 px-[14px] rounded-lg text-left hover:bg-[#F5F5F5] transition-colors"
-              @click="onNewCate"
-            >
-              <i class="i-lucide-plus w-3 h-3 text-[#6B6B6B]"></i>
-              <span class="text-sm text-[#6B6B6B]">新建</span>
-            </button>
-            <button
-              type="button"
-              class="flex items-center gap-2 h-9 px-[14px] rounded-lg text-left hover:bg-[#F5F5F5] transition-colors"
-            >
-              <i class="i-lucide-settings w-3 h-3 text-[#6B6B6B]"></i>
-              <span class="text-sm text-[#6B6B6B]">管理</span>
-            </button>
-          </div>
+          <button
+            type="button"
+            class="flex items-center gap-2 h-9 px-[14px] rounded-lg text-left hover:bg-[#F5F5F5] transition-colors"
+            @click="onNewCate"
+          >
+            <i class="i-lucide-plus w-3 h-3 text-[#6B6B6B]"></i>
+            <span class="text-sm text-[#6B6B6B]">新建</span>
+          </button>
+          <button
+            type="button"
+            class="flex items-center gap-2 h-9 px-[14px] rounded-lg text-left hover:bg-[#F5F5F5] transition-colors"
+          >
+            <i class="i-lucide-settings w-3 h-3 text-[#6B6B6B]"></i>
+            <span class="text-sm text-[#6B6B6B]">管理</span>
+          </button>
         </div>
       </Transition>
     </div>
@@ -93,10 +92,12 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useLodoModal } from '@/utils/modal'
 import AddCateModal from '@/components/AddCateModal.vue'
+import { supabase } from '@/utils/superbase';
+import { useAllCates } from '@/hooks/useGlobal'
 
 const route = useRoute()
 const categoryExpanded = ref(true)
@@ -115,6 +116,8 @@ function onNewCate() {
   openNewCate()
 }
 
+
+const allCates = useAllCates().get()
 
 </script>
 
